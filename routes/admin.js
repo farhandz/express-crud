@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const adminController = require('../controller/adminController')
+const {upload} = require('../middleware/multer')
 
 router.get('/dashboard', adminController.viewDashboard)
 
@@ -11,6 +12,9 @@ router.put('/category/', adminController.editCategory)
 
 // bank
 router.get('/bank', adminController.viewBank)
+router.post('/bank', upload ,adminController.addBank)
+router.delete('/bank/:id', adminController.deleteBank)
+router.put('/bank', upload, adminController.editBank)
 
 
 //  item
