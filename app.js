@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin')
+const apiRouter = require('./routes/api')
 const methodOvveride = require('method-override')
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -16,7 +17,7 @@ var app = express();
 
 
 // database connection
-mongoose.connect("mongodb://127.0.0.1:27017/db_ExpressJS", {
+mongoose.connect("mongodb://127.0.0.1:27017/db_BISKCil", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -61,6 +62,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 // admin router
 app.use('/admin', adminRouter)
+
+// api router
+app.use('/api/v1/member', apiRouter)
 
 
 // catch 404 and forward to error handler
